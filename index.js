@@ -115,6 +115,7 @@ app.post("/login", async (req, res) => {
 
 //* Add Note
 app.post("/add-note", authenticateToken, async (req, res) => {
+  const {title, content, tags} = req.body;
   
 });
 
