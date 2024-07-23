@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 });
 
 //* Create Accout
-app.post("/create-account", async (req, res) => {
+app.post("/register", async (req, res) => {
   const { fullName, email, password } = req.body;
   if (!fullName) {
     return res
@@ -114,7 +114,7 @@ app.post("/login", async (req, res) => {
 });
 
 //* Get User
-app.get("/get-user/", authenticateToken, async (req, res) => {
+app.get("/get-user", authenticateToken, async (req, res) => {
   const { user } = req.user;
   const isUser = await User.findOne({ _id: user._id });
   if (!isUser) {
@@ -127,7 +127,7 @@ app.get("/get-user/", authenticateToken, async (req, res) => {
       _id: isUser._id,
       createdOn: isUser.createdOn
     },
-    message: "",
+    message: "Get user successfull",
   });
 });
 
