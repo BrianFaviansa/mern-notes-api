@@ -6,6 +6,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
+const helmet = require("helmet");
+const ExpressMongoSanitize = require("express-mongo-sanitize");
 
 // Import configuration
 const config = require("./config.json");
@@ -25,6 +27,8 @@ app.use(
     origin: "*",
   })
 );
+app.use(helmet());
+app.use(ExpressMongoSanitize());
 
 // Connect to MongoDB
 mongoose
